@@ -1,8 +1,10 @@
-# Arduino-MAX30100
+# Arduino-MAX30100 and MAX30102
+
+Adding support for the MAX30102 see: http://bobdavis321.blogspot.com/2021/02/working-with-max30100-and-max30102.html
 
 [![Build Status](https://travis-ci.org/oxullo/Arduino-MAX30100.svg?branch=master)](https://travis-ci.org/oxullo/Arduino-MAX30100)
 
-Arduino library for the Maxim Integrated MAX30100 oximetry / heart rate sensor.
+Arduino library for the Maxim Integrated MAX30100 AND MAX30102 oximetry / heart rate sensor.
 
 ![MAX30100](http://www.mouser.com/images/microsites/Maxim_MAX30100.jpg)
 
