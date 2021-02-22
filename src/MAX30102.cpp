@@ -134,19 +134,18 @@ void MAX30102::burstRead(uint8_t baseAddress, uint8_t *buffer, uint8_t length)
 
 void MAX30102::readFifoData()
 {
-    uint8_t buffer[MAX30102_FIFO_DEPTH*4];
+    uint8_t buffer[MAX30102_FIFO_DEPTH*6];
     uint8_t toRead;
 
     toRead = (readRegister(MAX30102_REG_FIFO_WRITE_POINTER) - readRegister(MAX30102_REG_FIFO_READ_POINTER)) & (MAX30102_FIFO_DEPTH-1);
 
     if (toRead) {
-        burstRead(MAX30102_REG_FIFO_DATA, buffer, 4 * toRead);
-
+        burstRead(MAX30102_REG_FIFO_DATA, buffer, 6 * toRead);
         for (uint8_t i=0 ; i < toRead ; ++i) {
             // Warning: the values are always left-aligned
             readoutsBuffer.push({
-                    .ir=(uint16_t)((buffer[i*4] << 8) | buffer[i*4 + 1]),
-                    .red=(uint16_t)((buffer[i*4 + 2] << 8) | buffer[i*4 + 3])});
+              .ir=(long)((buffer[i*6]<<16)|(buffer[i*6+1]<<8)|buffer[i*6+2]),
+              .red=(long)((buffer[i*6+3]<<16)|(buffer[i*6+4]<<8)|buffer[i*6+5]) });
         }
     }
 }
