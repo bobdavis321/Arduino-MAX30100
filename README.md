@@ -4,19 +4,19 @@ Adding support for the MAX30102 see: http://bobdavis321.blogspot.com/2021/02/wor
 
 I decided to fork the MAX30100 library and make it into a MAX30102 library.  It is not nearly as easy as changing the register numbers!  Here is what I have done so far:
 1. Copy all src files and rename them as MAX20102_XXXX
-2. Edit all src files contents to replace MAX30100 wit MAX30102
+2. Edit all src files contents to replace MAX30100 with MAX30102
 3. Change device ID from 11 to 15
 4. Change registers as follows:
-    A. 01->02
-    B 02->04
-    C 03->05
-    D 04->06
-    E 05->07
-    F 06->09
-    G 07->0A
-    H 09->0C and 0D
-    I 16->1F
-    J 17->20
+    01->02
+    02->04
+    03->05
+    04->06
+    05->07
+    06->09
+    07->0A
+    09->0C and 0D
+    16->1F
+    17->20
 5. Create second LED2_PA register (addx 0D above)
 6. Biggest issue:  MAX30100 has 16 bit analog converters fitting into 2 byte transfers.
                             MAX30102 has 18 bit analog converters fitting into 3 byte transfers!
